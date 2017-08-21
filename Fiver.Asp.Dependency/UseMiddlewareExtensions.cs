@@ -15,17 +15,16 @@ namespace Fiver.Asp.Dependency
     public class HelloWorldMiddleware
     {
         private readonly RequestDelegate next;
-        private readonly IGreetingService greetingService;
 
         public HelloWorldMiddleware(
-            RequestDelegate next, 
-            IGreetingService greetingService)
+            RequestDelegate next)
         {
             this.next = next;
-            this.greetingService = greetingService;
         }
 
-        public async Task Invoke(HttpContext context)
+        public async Task Invoke(
+            HttpContext context,
+            IGreetingService greetingService)
         {
             var message = greetingService.Greet("World (via DI)");
             await context.Response.WriteAsync(message);
