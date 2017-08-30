@@ -25,6 +25,7 @@ namespace Fiver.Asp.Dependency
             IHostingEnvironment env)
         {
             app.UseHelloWorld();
+            //app.UseHelloDevelopers(); // using GetService on HttpContext.ServiceProvider
         }
     }
 }
